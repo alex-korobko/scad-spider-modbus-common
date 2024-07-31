@@ -1,0 +1,12 @@
+target_sources(
+  scad-spider-modbus-common
+  PRIVATE
+    block_parameter.hpp
+    block_signal.hpp
+    device_block.hpp
+    device.hpp
+    line.hpp
+    message_type.hpp
+    message.hpp
+    station.hpp
+)

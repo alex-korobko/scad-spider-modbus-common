@@ -24,7 +24,7 @@ TEST(device_test, DeviceBlockManipulationTest)
 {
     unsigned int block_id = 1;
     std::string block_name = "block1";
-    device_block block_to_test(block_id, block_name, std : vector<block_signal>(), std::vector<block_parameter>());
+    device_block block_to_test(block_id, block_name, std::vector<block_signal>(), std::vector<block_parameter>());
     unsigned int id = 1;
     unsigned int order_number = 3;
     std::string ip_address = "172.168.23.3";
