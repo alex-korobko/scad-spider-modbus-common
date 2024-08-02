@@ -3,24 +3,26 @@
 #include "../models/message.hpp"
 #include "../models/block_signal.hpp"
 #include "../models/block_parameter.hpp"
-#include <gtest/gtest.h>
+#include <boost/test/unit_test.hpp>
 
-TEST(device_test, DeviceCreationTest)
+BOOST_AUTO_TEST_SUITE( DeviceTests )
+
+BOOST_AUTO_TEST_CASE( DeviceCreationTest)
 {
     unsigned int id = 1;
     unsigned int order_number = 3;
     std::string ip_address = "172.168.25.3";
     bool is_enabled = true;
     device device_to_test(id, order_number, ip_address, is_enabled, std::vector<device_block>(), std::vector<message>());
-    EXPECT_EQ(device_to_test.get_id(), id);
-    EXPECT_EQ(device_to_test.get_order_number(), order_number);
-    EXPECT_EQ(device_to_test.get_ip_address(), ip_address);
-    EXPECT_EQ(device_to_test.is_enabled(), is_enabled);
-    EXPECT_EQ(device_to_test.get_blocks().size(), 0);
-    EXPECT_EQ(device_to_test.get_messages().size(), 0);
+    BOOST_TEST_REQUIRE(device_to_test.get_id() == id);
+    BOOST_TEST_REQUIRE(device_to_test.get_order_number() == order_number);
+    BOOST_TEST_REQUIRE(device_to_test.get_ip_address() == ip_address);
+    BOOST_TEST_REQUIRE(device_to_test.is_enabled() == is_enabled);
+    BOOST_TEST_REQUIRE(device_to_test.get_blocks().size() == 0);
+    BOOST_TEST_REQUIRE(device_to_test.get_messages().size(), 0);
 }
 
-TEST(device_test, DeviceBlockManipulationTest)
+BOOST_AUTO_TEST_CASE( DeviceBlockManipulationTest )
 {
     unsigned int block_id = 1;
     std::string block_name = "block1";
@@ -29,15 +31,16 @@ TEST(device_test, DeviceBlockManipulationTest)
     unsigned int order_number = 3;
     std::string ip_address = "172.168.23.3";
     bool is_enabled = true;
-    std::vector<device_block> new_blocks = {block_to_test};
+    std::vector<device_block> new_blocks;
+    new_blocks.push_back(block_to_test);
     device device_to_test(id, order_number, ip_address, is_enabled, new_blocks, std::vector<message>());
     std::vector<device_block> blocks = device_to_test.get_blocks();
-    EXPECT_EQ(blocks.size(), 1);
-    EXPECT_EQ(blocks[0].get_id(), block_id);
-    EXPECT_EQ(blocks[0].get_name(), block_name);
+    BOOST_TEST_REQUIRE(blocks.size() == 1);
+    BOOST_TEST_REQUIRE(blocks[0].get_id() == block_id);
+    BOOST_TEST_REQUIRE(blocks[0].get_name() == block_name);
 }
 
-TEST(device_test, DeviceMessageManipulationTest)
+BOOST_AUTO_TEST_CASE(DeviceMessageManipulationTest)
 {
     unsigned int message_id = 1;
     std::string message_text = "message1";
@@ -48,11 +51,14 @@ TEST(device_test, DeviceMessageManipulationTest)
     std::string ip_address = "172.168.22.33";
     bool is_enabled = true;
 
-    std::vector<message> new_messages = {message_to_test};
+    std::vector<message> new_messages;
+    new_messages.push_back(message_to_test);
     device device_to_test(id, order_number, ip_address, is_enabled, std::vector<device_block>(), new_messages);
     std::vector<message> messages = device_to_test.get_messages();
-    EXPECT_EQ(messages.size(), 1);
-    EXPECT_EQ(messages[0].get_id(), message_id);
-    EXPECT_EQ(messages[0].get_text(), message_text);
-    EXPECT_EQ(messages[0].get_type(), message_type);
+    BOOST_TEST_REQUIRE(messages.size() = 1);
+    BOOST_TEST_REQUIRE(messages[0].get_id() == message_id);
+    BOOST_TEST_REQUIRE(messages[0].get_text() == message_text);
+    BOOST_TEST_REQUIRE(messages[0].get_type() == message_type);
 }
+
+BOOST_AUTO_TEST_SUITE_END()

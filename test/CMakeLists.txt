@@ -6,4 +6,5 @@ target_sources(
    message_test.cpp
    message_type_test.cpp
    station_test.cpp
+   testing_main.cpp
 )
