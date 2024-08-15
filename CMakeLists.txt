@@ -6,13 +6,24 @@ project(scad-spider-modbus-common-project
 
 include(FetchContent)
 
-
-
 add_executable(scad-spider-modbus-common)
 add_subdirectory(boost-cmake)
-add_subdirectory(models)
-add_subdirectory(ini_file_utils)
 add_subdirectory(test)
+
+target_sources(
+  scad-spider-modbus-common
+  PRIVATE
+    models/block_parameter.hpp
+    models/block_signal.hpp
+    models/device_block.hpp
+    models/device.hpp
+    models/line.hpp
+    models/message_type.hpp
+    models/message.hpp
+    models/station.hpp
+    ini_file_utils/ini_2_models_factory.hpp
+    ini_file_utils/ini_2_models_factory.cpp
+)
 
 target_link_libraries(
   scad-spider-modbus-common
