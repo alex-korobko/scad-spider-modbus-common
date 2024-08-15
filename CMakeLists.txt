@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.30)
+set(CMAKE_SUPPRESS_DEVELOPER_WARNINGS 1)
 project(scad-spider-modbus-common-project
     VERSION 1.0
     LANGUAGES CXX
@@ -9,6 +10,7 @@ include(FetchContent)
 add_executable(scad-spider-modbus-common)
 add_subdirectory(boost-cmake)
 add_subdirectory(test)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-c++11-extensions -Wno-c++17-extensions")
 
 target_sources(
   scad-spider-modbus-common
