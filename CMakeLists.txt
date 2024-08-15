@@ -4,8 +4,9 @@ project(scad-spider-modbus-common-project
     LANGUAGES CXX
 )
 
-enable_testing()
 include(FetchContent)
+
+
 
 add_executable(scad-spider-modbus-common)
 add_subdirectory(boost-cmake)
@@ -19,3 +20,9 @@ target_link_libraries(
   Boost::program_options
   Boost::unit_test_framework
 )
+
+enable_testing()
+
+add_test( 
+  scad-spider-modbus-common-tests
+  scad-spider-modbus-common )

@@ -1,6 +1,6 @@
 target_sources(
   scad-spider-modbus-common
-  PRIVATE
+  PUBLIC
    device_test.cpp
    line_test.cpp
    message_test.cpp

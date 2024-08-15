@@ -19,7 +19,7 @@ BOOST_AUTO_TEST_CASE( DeviceCreationTest)
     BOOST_TEST_REQUIRE(device_to_test.get_ip_address() == ip_address);
     BOOST_TEST_REQUIRE(device_to_test.is_enabled() == is_enabled);
     BOOST_TEST_REQUIRE(device_to_test.get_blocks().size() == 0);
-    BOOST_TEST_REQUIRE(device_to_test.get_messages().size(), 0);
+    BOOST_TEST_REQUIRE(device_to_test.get_messages().size() == 0);
 }
 
 BOOST_AUTO_TEST_CASE( DeviceBlockManipulationTest )
